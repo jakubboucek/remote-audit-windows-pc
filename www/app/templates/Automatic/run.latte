@@ -1,0 +1,47 @@
+{block content}
+	{if $error}
+	<p><strong style="color:red;">Error:</strong> I am so sorry, you are using outdated version of Audit tool.</p>
+	<p>Please <a n:href="Homepage:signed">download current version here</a>.<p>
+	{else}
+	<p>Status: <span id="statustext">Waiting to connect…</span></p>
+	<p>Progress: <span id="progresstext">0%, please wait…</span></p>
+	<p><img src="/sw/img/spinner.gif" id="spinner"></p>
+
+	<script>
+	var statusApi = {link //Api:status token=>$token};
+	var doneSite = {link Homepage:done token=>$token};
+	var interval = window.setInterval( update, 5000 );
+	var timeLimit = new Date(+new Date + (60*15*1000));
+	var $status;
+	var $progress;
+	$(function(){
+		$status = $('#statustext');
+		$progress = $('#progresstext');
+	});
+
+	function update() {
+		$.get( statusApi, function( data ) {
+			console.log(data);
+			if(data.status && new Date() < timeLimit) {
+				if(data.token.connected) {
+					$status.text( 'Connected' );
+				}
+				if(data.token.description) {
+					$status.text( data.token.description );
+				}
+				if(data.token.complete) {
+					window.location.href = doneSite;
+				}
+				$progress.text( parseInt(data.token.progress * 100) + '%, please wait…');
+			}
+			else {
+				$status.html('<strong style="color:red;">Error occured, please try it again</strong>');
+				$progress.text('-');
+				$('#spinner').hide();
+				window.clearInterval(interval);
+			}
+		}, 'json');
+	}
+	</script>
+	{/if}
+{/block}

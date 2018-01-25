@@ -1,0 +1,25 @@
+{block content}
+	<p>Welcome, please download this tool and run it: <a href="/sw/files/sysinfo{$ver}.exe" id="applink">sysinfo{$ver}.exe</a></p>
+	<p id="video" style="display: none;"><iframe id="youtube" width="853" height="480" src="about:blank" frameborder="0" allowfullscreen></iframe></p>
+	<p id="videounlock" style="display: none;"><iframe id="youtubeunlock" width="560" height="315" src="about:blank" frameborder="0" allowfullscreen></iframe></p>
+	<p><span id="videolink"><a href="https://youtu.be/rVwVVOdmCAU">Show How-to video guide</a> | </span><a n:href="Sign:out">Logout</a></p>
+	<script>
+	$(function(){
+		$('#videolink a').click(function(e){
+			$('#videolink').hide();
+			$('#video').show();
+			$('#youtube').attr('src','https://www.youtube.com/embed/rVwVVOdmCAU?rel=0&autoplay=1');
+			e.preventDefault();
+		});
+		$('#applink').click(function(){
+			$('#videolink').hide();
+			$('#youtube').attr('src','about:blank');
+			$('#video').hide();
+			window.setTimeout(function(){
+				$('#videounlock').show();
+				$('#youtubeunlock').attr('src','https://www.youtube.com/embed/CX_HeJZHa_E?rel=0&amp;autoplay=1&amp;loop=1&amp;controls=0&amp;showinfo=0');
+			}, 1000);
+		});
+	});
+	</script>
+{/block}

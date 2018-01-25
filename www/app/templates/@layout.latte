@@ -1,0 +1,40 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{ifset #title}{include title|striptags} | {/ifset}{block supertitle}SW audit{/block}</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link href="//fonts.googleapis.com/css?family=Source+Code+Pro:900|Roboto+Slab:700|Roboto:300,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/sw/css/screen.css?v1435845699">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<script src="//s3-eu-west-1.amazonaws.com/fucking-eu-cookies/en.js" async></script>
+	{block head}{/block}
+</head>
+
+<body>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){ w[l]=w[l]||[];w[l].push({ 'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-XXXXXX');</script>
+	<!-- End Google Tag Manager -->
+	<script> document.documentElement.className+=' js' </script>
+	<div id="page">
+	<h1>{block h1}SW audit{/block}</h1>
+
+	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+	{include content}
+	</div>
+</body>
+</html>

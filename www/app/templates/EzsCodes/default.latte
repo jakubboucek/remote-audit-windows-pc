@@ -1,0 +1,62 @@
+{block supertitle}
+EZS codes
+{/block}
+{block h1}
+Office alarm code
+{/block}
+{block content}
+	{var $loginParams = array('redirectNette'=>'EzsCodes:default')}
+	{if !$logged}
+		<p>Welcome, here you can get your private code for Office alarm system.</p>
+		<p><img src="/img/honeywell-panel.jpg" alt="Panel logo" height="160"></p>
+		<p>Please, login here: <a href="{link Sign:in, 'params' => $loginParams}">Sign in</a></p>
+	{elseif !$code}
+		<p>We currently have no code for you.</p>
+		<p>Please contact <a href="itsupport@company.com">IT Support</a>.</small></p>
+	{else}
+		<h2 style="text-align:center; color: #872079;font-family:'Roboto Slab' ">Your code is ready!</h2>
+		{if $touch}
+			<p>Employee name: <strong>{$code['firstname']} {$code['lastname']}</strong> <br>
+			Your private code: <strong>{$code['code']}</strong></p>
+			<p style="color:red"><strong>Keep your code secret! Never NEVER share it with anybody else!</strong></p>
+			<p>
+				Please remember your code, read
+				<a href="removed">alarm guide</a>
+				 and carefully follow instructions.
+			</p>
+			{if $returned}
+				<div class="flash info">You are already shown this code (at {$code['touched']|date:'j.n.Y H:i'}). This site is temporary so please remember your code.</div>
+			{/if}
+
+		{else}
+
+			<p>For show your code, you must accept this Conditions &amp; Terms:</p>
+			{form codePickForm}
+
+        	<div class="flash error" n:foreach="$form->errors as $error">{$error}</div>
+
+			<table width="100%">
+				<tr class="required">
+					<td>{input iam}</td>
+				</tr>
+				<tr>
+				<td colspan="2">
+					<iframe src="removed" width="100%" height="300"></iframe>
+				</td>
+				</tr>
+				<tr class="required">
+					<td>{input accept_terms}</td>
+				</tr>
+				<tr>
+					<td>{input send class=>"mainbutton"}</td>
+				</tr>
+
+			</table>
+			{/form}
+		{/if}
+	{/if}
+
+	{if $logged}
+		<p><a href="{link Sign:out, 'params' => $loginParams}">Logout</a></p>
+	{/if}
+{/block}

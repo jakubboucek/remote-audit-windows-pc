@@ -1,0 +1,49 @@
+body { background: transparent url('../img/bg.jpg') no-repeat center top; }
+body {
+	font-family: Arial;
+}
+h1 { font-size: 3em; font-family: 'Roboto Slab', serif; font-weight: 700; color: #872079; text-align: center; }
+p { font-size: 1.2em; font-family: 'Roboto', sans-serif; font-weight: 300; color: #333; text-align: center; margin-top: 2em; }
+a { color: #00164f; text-decoration: none; border-bottom: 1px solid #C5C9D9; background: url('../img/h3-a.png') no-repeat scroll right center transparent; padding-right: 15px;}
+a:hover, a:focus, a:active { border-color: #979AA9; }
+.flash {
+	padding: 8px;
+	background-color: #ff0;
+	border: 1px solid #cc0;
+	border-radius: 5px;
+}
+.flash.error {
+	background-color: #f55;
+	border: 1px solid #c00;
+}
+#page {
+	max-width: 800px;
+	margin: 0 auto;
+}
+.mainbutton {
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	display: inline-block;
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-appearance: button;
+	text-transform: none;
+	overflow: visible;
+	box-sizing: border-box;
+}
